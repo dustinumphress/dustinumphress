@@ -1,86 +1,114 @@
-# Dustin Umphress
+# IT Infrastructure Optimization
 
-Cloud Engineer / CloudOps • AWS • Identity & Automation
-
----
-
-I’m a cloud-focused systems engineer with a strong operations mindset. My background spans AWS infrastructure, Microsoft Entra ID (Azure AD), identity-driven automation, and cost-aware cloud design. I focus on **keeping production systems reliable, observable, and secure**, not just building them.
-
-My work emphasizes:
-
-* Running cloud infrastructure safely in real-world conditions
-* Identity-first access control and permissions hygiene
-* Automation that reduces operational risk and cloud spend
-* Clear operational thinking around failure, recovery, and monitoring
+CloudOps-focused automation and operational patterns for reducing infrastructure cost while maintaining reliability.
 
 ---
 
-## What I Work On
+## Why This Exists
 
-* **AWS Cloud Operations** – EC2, IAM, CloudWatch, cost controls, lifecycle automation
-* **Identity & Access Management** – Entra ID, RBAC, Conditional Access, least-privilege design
-* **Automation** – Python, AWS Lambda, API-driven workflows
-* **Operational Reliability** – Monitoring, alerting, failure handling, and recovery patterns
+In real-world environments, infrastructure costs often grow faster than usage because systems lack guardrails, visibility, and automated decision-making. This project demonstrates **practical CloudOps patterns** for optimizing infrastructure spend **without sacrificing uptime or operational safety**.
 
----
-
-## Featured Projects
-
-### Serverless-Orchestrated EC2 Game Server
-
-On-demand EC2 orchestration designed to reduce idle cloud costs while maintaining availability.
-
-**Why this exists**
-Simulates a real-world CloudOps scenario where compute resources must be available quickly without running 24/7.
-
-**Operational considerations**
-
-* Monitoring: CloudWatch metrics and health checks
-* Failure modes: Instance termination, IAM permission errors, network issues
-* Recovery: Automated restart with manual override
-* Security: Least-privilege IAM roles
+This is not about aggressive cost-cutting — it’s about **running infrastructure intentionally**.
 
 ---
 
-### Identity-Aware Automation Workflows
+## Problem Being Solved
 
-Automation patterns that integrate identity, permissions, and operational guardrails.
+Common operational problems addressed here:
 
-**Why this exists**
-Identity misconfiguration is one of the most common causes of outages and security incidents.
-
-**Operational considerations**
-
-* Role-based access validation
-* Safe automation with scoped permissions
-* Auditability and change tracking
+* Idle or underutilized compute resources
+* Lack of visibility into cost drivers
+* Manual, error-prone infrastructure adjustments
+* Over-permissioned automation that increases risk
+* No clear recovery path when automation fails
 
 ---
 
-## How I Think About Operations
+## What This Project Demonstrates
 
-* Accuracy over speed — fix it once, fix it correctly
-* Observability before optimization
-* Identity and permissions are part of uptime
-* Every automation should have a failure plan
-
----
-
-## Certifications
-
-* AWS Certified Solutions Architect – Associate
-* AWS Certified Cloud Practitioner
-* (In progress) SC-300: Identity and Access Administrator
-* (Planned) AWS CloudOps Administrator – Associate
+* Cost-aware infrastructure decision making
+* Safe automation with least-privilege IAM
+* Operational thinking around failure and recovery
+* Monitoring-first design
+* Repeatable patterns suitable for production environments
 
 ---
 
-## Currently Learning
+## Architecture Overview
 
-* AWS operational excellence patterns
-* Incident response and recovery workflows
-* Cloud identity attack and failure paths
+* **Compute**: AWS EC2
+* **Automation**: Python scripts / AWS-native tooling
+* **Monitoring**: CloudWatch metrics and alarms
+* **Security**: IAM roles scoped to specific actions
+
+This architecture mirrors small-to-mid scale production environments commonly found in SMBs and MSP-managed clients.
 
 ---
 
-If you’re looking for someone who understands how cloud systems behave **after deployment**, I’m happy to connect.
+## Operational Considerations
+
+### Monitoring & Visibility
+
+* Key metrics monitored:
+
+  * CPU utilization
+  * Instance uptime / state
+  * Cost trends over time
+* Alerts trigger when utilization or cost thresholds are exceeded
+
+### Failure Modes
+
+* Automation execution failure
+* IAM permission denial
+* Resource API throttling
+* Unexpected infrastructure state changes
+
+### Recovery Strategy
+
+* Fail-safe defaults (no destructive actions without validation)
+* Manual override supported
+* Logging enabled for audit and troubleshooting
+
+---
+
+## Security & IAM Design
+
+* Automation uses **dedicated IAM roles**
+* Permissions are scoped to the minimum required actions
+* No long-lived credentials stored in code
+* Changes are auditable via logs
+
+Identity and permissions are treated as **operational dependencies**, not afterthoughts.
+
+---
+
+## Example Runbook Excerpt
+
+**Trigger:** Sustained low utilization on EC2 instance
+**Action:** Flag resource for optimization review
+**Validation:** Confirm instance role and workload criticality
+**Outcome:** Adjust instance size or scheduling policy
+
+This mirrors how infrastructure changes should occur in real environments — intentionally and reversibly.
+
+---
+
+## Intended Audience
+
+* CloudOps / Cloud Engineer roles
+* Systems Administrators transitioning to cloud
+* MSP engineers managing cost and reliability
+* Teams looking to operationalize cost optimization
+
+---
+
+## Key Takeaways
+
+* Cost optimization is an operational discipline
+* Automation must be observable and reversible
+* Identity and permissions directly impact reliability
+* Production systems should fail safely
+
+---
+
+This repository reflects how I approach infrastructure in practice: **measure first, automate carefully, and design for failure.**
