@@ -1,4 +1,4 @@
-# Hi, I'm Dustin
+# Hi, I'm Dustin Umphress
 
 I’m an **AWS Certified Solutions Architect** with 10+ years of experience in IT operations and systems administration, now focused on Cloud Engineering and CloudOps-style automation.
 
